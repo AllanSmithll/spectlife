@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulário de cadastro</title>
+</head>
+<body class="main-screen">
+<div class="card-main">
+    <div class="main-content">
+        <h1>Cadastrar-se</h1>
+        <form th:action="@{/animalia/create}" method="post" th:object="${animal}">
+            <input id="input-id" class="input-form" type="hidden" th:field="*{id}" />
+
+            <label class="label-form" for="input-scientific-name">Nome cientíco</label>
+            <input id="input-scientific-name" class="input-form" type="text" th:field="*{scientificName}" />
+
+            <label class="label-form" for="input-common-name">Nome regional</label>
+            <input id="input-common-name" class="input-form" type="text" th:field="*{commonName}" />
+
+            <label class="label-form" for="input-breed">Raça</label>
+            <input id="input-breed" class="input-form" type="text" th:field="*{breed}" />
+
+            <label class="label-form" for="input-habitat">Habitat mais comum</label>
+            <input id="input-habitat" class="input-form" type="text" th:field="*{habitat}" />
+
+            <label class="label-form" for="input-origin-region">Região de Origem</label>
+            <input id="input-origin-region" class="input-form" type="text" th:field="*{originRegion}" />
+
+            <label class="label-form" for="input-geographic-distribuition">Distribuição geográfica</label>
+            <input id="input-geographic-distribuition" class="input-form" type="text" th:field="*{geographicDistribution}" />
+
+            <div class="label-locomotion">
+                <h3>Tipo de locomoção:</h3>
+                <label th:each="lc : ${locomotionList}">
+                    <input type="radio" th:field="*{locomotion}" th:value="${lc}"
+                           th:checked="${locomotionList}" />
+                    <span th:text="${lc.getDescription()}"></span>
+                </label>
+            </div>
+
+            <div class="label-type-food">
+                <h3>Tipo de alimentação:</h3>
+                <label th:each="al : ${typeFoodList}">
+                    <input type="radio" th:field="*{typeFood}" th:value="${al}"
+                           th:checked="${typeFoodList}" />
+                    <span th:text="${al.getDescription()}"></span>
+                </label>
+            </div>
+
+            <label class="label-form" for="input-hope-life">Expectativa de vida</label>
+            <input id="input-hope-life" class="input-form" type="text" th:field="*{hopeLife}" />
+
+            <div class="label-type-reprodution">
+                <h3>Tipo de reprodução:</h3>
+                <label th:each="re : ${typeReprodutionList}">
+                    <input type="radio" th:field="*{typeReproduction}" th:value="${re}"
+                           th:checked="${typeReprodutionList}" />
+                    <span th:text="${re.getDescription()}"></span>
+                </label>
+            </div>
+
+            <label class="label-form" for="input-period-pregnancy">Período de gestação</label>
+            <input id="input-period-pregnancy" class="input-form" type="text" th:field="*{periodPregnancy}" />
+
+            <label class="label-form" for="input-fur-pattern">Padrão de pelagem</label>
+            <input id="input-fur-pattern" class="input-form" type="text" th:field="*{furPattern}" />
+
+            <label class="label-form" for="input-main-colors">Cores principais</label>
+            <input id="input-main-colors" class="input-form" type="text" th:field="*{mainColors}" />
+
+            <label class="label-form" for="input-average-length">Comprimento médio</label>
+            <input id="input-average-length" class="input-form" type="text" th:field="*{averageLength}" />
+
+            <label class="label-form" for="input-average-width">Largura média</label>
+            <input id="input-average-width" class="input-form" type="text" th:field="*{averageWidth}" />
+
+            <label class="label-form" for="input-average-height">Altura média</label>
+            <input id="input-average-height" class="input-form" type="text" th:field="*{averageHeight}" />
+
+            <label class="label-form" for="input-url-image">URL da imagem</label>
+            <input id="input-url-image" class="input-form" type="text" th:field="*{urlImg}" />
+
+            <label class="label-form" for="input-addtional-details">Informações adicionais</label>
+            <input id="input-addtional-details" class="input-form" type="text" th:field="*{additionalDetails}" />
+
+            <input class="submit-input" type="submit" value="Salvar">
+        </form>
+    </div>
+</div>
+</body>
+</html>

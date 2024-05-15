@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animais</title>
+</head>
+<body class="main-screen">
+<div class="card-component">
+    <div class="card-content">
+        <h1>Todos os animais cadastrados</h1>
+        <button class="button-add">
+            <a th:href="@{form.html}">Novo</a>
+        </button>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome científico</th>
+                <th>Nome regional</th>
+                <th>Habitat</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="ani : ${animals}">
+                <td>[[${ani.id}]]</td>
+                <td th:text="${ani.scientificName}"></td>
+                <td th:text="${ani.commonName}"></td>
+                <td th:text="${ani.habitat}"></td>
+                <td>
+                    <form th:action="@{/animals/{id}/delete(id=${ani.id})}" method="post">
+                        <input type="hidden" name="delete" value="DELETE" />
+                        <input class="input-delete" type="submit" value="Remover" />
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
