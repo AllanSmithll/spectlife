@@ -14,8 +14,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AnimalTaxonomy extends Taxonomy {
+    @Column(nullable = false)
     private String phylum;
     private String subPhylum;
 }

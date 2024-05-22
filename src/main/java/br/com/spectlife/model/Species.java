@@ -38,10 +38,14 @@ public abstract class Species {
     private TypeReprodution typeReproduction;
     @Column(nullable = false)
     private String mainColors;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(12) default 'Desconhecido'")
     private String averageLength;
+    @Column(columnDefinition = "varchar(12) default 'Desconhecido'")
     private String averageWidth;
+    @Column(columnDefinition = "varchar(12) default 'Desconhecido'")
     private String averageHeight;
+    @Column(nullable = false)
     private String urlImg;
+    @Column(columnDefinition = "varchar(256) default 'Sem descrição'")
     private String additionalDetails;
 }
